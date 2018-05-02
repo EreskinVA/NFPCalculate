@@ -19,6 +19,7 @@
 		F8A3F2AE20998003001DC708 /* HystoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A3F2AD20998003001DC708 /* HystoryTableViewController.swift */; };
 		F8FC76CA2099CDF1006E2345 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC76C92099CDF1006E2345 /* ResultViewController.swift */; };
 		F8FC76CC2099CE3D006E2345 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC76CB2099CE3D006E2345 /* ResultTableViewCell.swift */; };
+		F8FC76CE2099E318006E2345 /* ParametrsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC76CD2099E318006E2345 /* ParametrsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		F8A3F2AD20998003001DC708 /* HystoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HystoryTableViewController.swift; sourceTree = "<group>"; };
 		F8FC76C92099CDF1006E2345 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		F8FC76CB2099CE3D006E2345 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		F8FC76CD2099E318006E2345 /* ParametrsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametrsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				F8A3F2A320997A64001DC708 /* LoginViewController.swift */,
 				F8A3F2AD20998003001DC708 /* HystoryTableViewController.swift */,
 				F8FC76C92099CDF1006E2345 /* ResultViewController.swift */,
+				F8FC76CD2099E318006E2345 /* ParametrsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				F84D2E652099B3A300ECB1E7 /* HystoryTableViewCell.swift in Sources */,
 				F8A3F2942099135A001DC708 /* ViewController.swift in Sources */,
 				F8A3F2922099135A001DC708 /* AppDelegate.swift in Sources */,
+				F8FC76CE2099E318006E2345 /* ParametrsViewController.swift in Sources */,
 				F8FC76CA2099CDF1006E2345 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

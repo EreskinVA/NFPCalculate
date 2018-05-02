@@ -10,6 +10,10 @@ import UIKit
 
 class ResultTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var workoutLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

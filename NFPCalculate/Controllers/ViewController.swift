@@ -13,6 +13,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     var arrayPickerView: Array = [String]()
     
+    let segueIdentyfire = "parametrSegue"
+    
     @IBOutlet weak var ageTF: UITextField!
     @IBOutlet weak var genderSC: UISegmentedControl!
     @IBOutlet weak var workoutSC: UISegmentedControl!
@@ -98,6 +100,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func pressNext(_ sender: UIButton) {
+        performSegue(withIdentifier: segueIdentyfire, sender: nil)
+    }
 }
 
