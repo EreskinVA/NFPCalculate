@@ -13,19 +13,30 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var totalPoints: UILabel!
     @IBOutlet weak var totalRating: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var resultView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        resultView.clipsToBounds = true
+        resultView.layer.cornerRadius = 15
+        resultView.layer.masksToBounds = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func pressBack(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func pressSave(_ sender: UIBarButtonItem) {
+    
+    }
+    
 }
+
 
 extension ResultViewController: UITableViewDelegate {}
 

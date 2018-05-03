@@ -145,9 +145,11 @@
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="cx9-9Z-K5x"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="ageLabel" destination="ZEB-yY-iD7" id="kmD-F1-YYq"/>
                         <outlet property="ageTF" destination="5rM-QE-6rU" id="xQ4-to-baw"/>
                         <outlet property="categorySC" destination="5gD-Rn-d3P" id="whz-Xj-xy4"/>
                         <outlet property="genderSC" destination="l23-2Y-kEM" id="x8A-Nn-MYZ"/>
+                        <outlet property="statusLabel" destination="ojK-b6-Gee" id="pMB-yw-IO8"/>
                         <outlet property="statusTF" destination="RVk-sr-pzr" id="atL-Pd-bQ7"/>
                         <outlet property="workoutSC" destination="6ER-64-KXv" id="Qg7-s0-mzS"/>
                         <segue destination="JY6-vO-UXN" kind="show" identifier="parametrSegue" id="G0y-cz-kF8"/>
@@ -155,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1736" y="-680"/>
+            <point key="canvasLocation" x="1734.375" y="-680.28169014084506"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="QCf-TT-3aG">
@@ -166,7 +168,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="J5z-dp-7Qk">
-                                <rect key="frame" x="16" y="72" width="288" height="427"/>
+                                <rect key="frame" x="16" y="88" width="288" height="460"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BN9-1e-Qfx" userLabel="Title Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="20.5"/>
@@ -201,10 +203,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7aQ-kh-7kI" userLabel="Table Stack View">
-                                        <rect key="frame" x="0.0" y="25.5" width="288" height="309"/>
+                                        <rect key="frame" x="0.0" y="25.5" width="288" height="342"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Af1-TV-mfZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="309"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="342"/>
                                                 <color key="backgroundColor" red="0.0" green="0.7686274509803922" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resultCell" rowHeight="55" id="Tf9-eO-3ig" customClass="ResultTableViewCell" customModule="NFPCalculate" customModuleProvider="target">
@@ -288,7 +290,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sex-w1-dkp">
-                                        <rect key="frame" x="0.0" y="339.5" width="288" height="87.5"/>
+                                        <rect key="frame" x="0.0" y="372.5" width="288" height="87.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwI-xF-Z8i">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="87.5"/>
@@ -363,11 +365,35 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" semanticContentAttribute="playback" translatesAutoresizingMaskIntoConstraints="NO" id="Ndn-hy-V1y">
+                                <rect key="frame" x="0.0" y="20" width="320" height="64"/>
+                                <color key="backgroundColor" red="0.0" green="0.77647058823529413" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="XOC-E2-eGK"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="РЕЗУЛЬТАТ" id="NEU-IX-05b">
+                                        <barButtonItem key="leftBarButtonItem" title="Назад" id="is7-hY-AEE">
+                                            <connections>
+                                                <action selector="pressBack:" destination="eLO-nP-vqY" id="n1I-ze-KhU"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="MsA-Gg-z0w">
+                                            <connections>
+                                                <action selector="pressSave:" destination="eLO-nP-vqY" id="2sf-Tu-1bU"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.22352941176470589" green="0.76470588235294112" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ejA-Vz-qsb" firstAttribute="bottom" secondItem="J5z-dp-7Qk" secondAttribute="bottom" constant="20" id="2dO-rf-2zI"/>
-                            <constraint firstItem="J5z-dp-7Qk" firstAttribute="top" secondItem="ejA-Vz-qsb" secondAttribute="top" constant="8" id="847-jS-KlZ"/>
+                            <constraint firstItem="J5z-dp-7Qk" firstAttribute="top" secondItem="Ndn-hy-V1y" secondAttribute="bottom" constant="4" id="Nbk-mA-87Q"/>
+                            <constraint firstItem="Ndn-hy-V1y" firstAttribute="top" secondItem="ejA-Vz-qsb" secondAttribute="top" id="V4t-7z-RGg"/>
+                            <constraint firstItem="Ndn-hy-V1y" firstAttribute="trailing" secondItem="ejA-Vz-qsb" secondAttribute="trailing" id="efM-b5-y9G"/>
+                            <constraint firstItem="Ndn-hy-V1y" firstAttribute="leading" secondItem="ejA-Vz-qsb" secondAttribute="leading" id="eoV-VE-J38"/>
                             <constraint firstItem="J5z-dp-7Qk" firstAttribute="leading" secondItem="ejA-Vz-qsb" secondAttribute="leading" constant="16" id="rYO-me-VVf"/>
                             <constraint firstItem="ejA-Vz-qsb" firstAttribute="trailing" secondItem="J5z-dp-7Qk" secondAttribute="trailing" constant="16" id="xBV-ko-ffF"/>
                         </constraints>
@@ -375,6 +401,7 @@
                     </view>
                     <connections>
                         <outlet property="levelLabel" destination="Zmg-29-96m" id="FGb-3p-VIP"/>
+                        <outlet property="resultView" destination="zwI-xF-Z8i" id="9cm-2c-0VY"/>
                         <outlet property="totalPoints" destination="PXD-tM-9y2" id="EGH-0G-xPG"/>
                         <outlet property="totalRating" destination="aIt-JQ-66F" id="rc7-Fv-461"/>
                     </connections>
@@ -627,7 +654,7 @@
                         <viewLayoutGuide key="safeArea" id="qmt-PG-2g0"/>
                     </view>
                     <connections>
-                        <segue destination="eLO-nP-vqY" kind="show" identifier="resultSegue" id="fQQ-0V-PU1"/>
+                        <segue destination="eLO-nP-vqY" kind="showDetail" identifier="resultSegue" id="fQQ-0V-PU1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eoj-SU-i33" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -801,6 +828,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PbA-it-sYX">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

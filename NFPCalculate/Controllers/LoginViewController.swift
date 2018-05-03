@@ -21,6 +21,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.statusBarView?.backgroundColor = #colorLiteral(red: 0.7333333333, green: 0.9725490196, blue: 0.9843137255, alpha: 1)
+        
         ref = Database.database().reference(withPath: "users")
         NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
@@ -58,7 +60,7 @@ class LoginViewController: UIViewController {
         warnLabel.text = text
         UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseInOut], animations: { [weak self] in
             self?.warnLabel.alpha = 1
-        }) { [weak self]complete in
+        }) { [weak self] complete in
             self?.warnLabel.alpha = 0
         }
     }
@@ -105,5 +107,11 @@ class LoginViewController: UIViewController {
         })
     }
     
+}
+
+extension UIApplication {
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
 }
 

@@ -10,8 +10,9 @@ import UIKit
 import Firebase
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
-    var arrayPickerView: Array = [String]()
+    
+    var arrayAgePickerView: Array = [String]()
+    var arrayStatusPickerView: Array = [String]()
     
     let segueIdentyfire = "parametrSegue"
     
@@ -20,45 +21,56 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var workoutSC: UISegmentedControl!
     @IBOutlet weak var categorySC: UISegmentedControl!
     @IBOutlet weak var statusTF: UITextField!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     var agePickerView = UIPickerView()
+    var statusPickerView = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         agePickerView.delegate = self
         agePickerView.dataSource = self
+        statusPickerView.delegate = self
+        statusPickerView.dataSource = self
         
-        
+        agePickerView.tag = 0
+        statusPickerView.tag = 1
         
         ageTF.inputView = agePickerView
         ageTF.textAlignment = .center
         ageTF.placeholder = "Выберите возраст"
         
-        statusTF.inputView = agePickerView
+        statusTF.inputView = statusPickerView
         statusTF.textAlignment = .center
         statusTF.placeholder = "Выберите статус"
         
     }
     
-    func inputArrayAge () {
-        arrayPickerView.removeAll()
+    func inputArrayAge() {
+        arrayAgePickerView.removeAll()
         for index in 18...54 {
-            arrayPickerView.append("\(index) лет")
+            arrayAgePickerView.append("\(index)")
         }
-        arrayPickerView.append("55 и более")
+        arrayAgePickerView.append("55 и более")
     }
     
-    func inputStatus() {
-        arrayPickerView.removeAll()
-        arrayPickerView.append("По контракту")
-        arrayPickerView.append("Кандидат в ВВУЗ")
-        arrayPickerView.append("Кандидат в ВВУЗ жен. пола")
-        arrayPickerView.append("Новое пополнение воинских частей")
-        arrayPickerView.append("По призыву до 6 мес, курсанты 1-го курса")
-        arrayPickerView.append("По призыву после 6 месяцев")
-        arrayPickerView.append("Курсанты 2-го курса")
-        arrayPickerView.append("Курсанты 3-го курса и старше")
+    func inputArrayStatus() {
+        arrayStatusPickerView.removeAll()
+        if genderSC.selectedSegmentIndex == 0 {
+            arrayStatusPickerView.append("По контракту")
+            arrayStatusPickerView.append("Кандидат в ВВУЗ")
+            arrayStatusPickerView.append("Новое пополнение воинских частей")
+            arrayStatusPickerView.append("По призыву до 6 мес, курсанты 1-го курса")
+            arrayStatusPickerView.append("По призыву после 6 месяцев")
+            arrayStatusPickerView.append("Курсанты 2-го курса")
+            arrayStatusPickerView.append("Курсанты 3-го курса и старше")
+        } else {
+            arrayStatusPickerView.append("По контракту")
+            arrayStatusPickerView.append("Кандидат в ВВУЗ жен. пола")
+        }
+        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -66,25 +78,42 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return arrayPickerView.count
+        switch pickerView.tag {
+        case 0:
+            return arrayAgePickerView.count
+        case 1:
+            return arrayStatusPickerView.count
+        default:
+            return 0
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print(component)
-        return arrayPickerView[row]
+        switch pickerView.tag {
+        case 0:
+            return arrayAgePickerView[row]
+        case 1:
+            return arrayStatusPickerView[row]
+        default:
+            return ""
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        ageTF.text = arrayPickerView[row]
-        ageTF.resignFirstResponder()
+        if pickerView.tag == 0 {
+            ageTF.text = arrayAgePickerView[row]
+            ageTF.resignFirstResponder()
+        } else if pickerView.tag == 1 {
+            statusTF.text = arrayStatusPickerView[row]
+            statusTF.resignFirstResponder()
+        }
     }
     
     @IBAction func pressAge(_ sender: UITextField) {
         inputArrayAge()
     }
     @IBAction func pressStatus(_ sender: UITextField) {
-        inputStatus()
+        inputArrayStatus()
     }
     @IBAction func pressSihnOut(_ sender: UIBarButtonItem) {
         do {
@@ -99,8 +128,35 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func animatedLabel(label: UILabel) {
+        UIView.animate(withDuration: 2, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseInOut], animations: {
+            label.textColor = UIColor.red
+            label.alpha = 0
+        }) { complete in
+            label.textColor = UIColor.white
+            label.alpha = 1
+        }
+    }
+    
     @IBAction func pressNext(_ sender: UIButton) {
+        
+        let age = ageTF.text!
+        let status = statusTF.text!
+
+        guard ((age != "") || (status != "")) else {
+            animatedLabel(label: statusLabel)
+            animatedLabel(label: ageLabel)
+            return
+        }
+        guard age != "" else {
+            animatedLabel(label: ageLabel)
+            return
+        }
+        guard status != "" else {
+            animatedLabel(label: statusLabel)
+            return
+        }
         performSegue(withIdentifier: segueIdentyfire, sender: nil)
     }
 }
