@@ -30,6 +30,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // установка PickerView
+        
         agePickerView.delegate = self
         agePickerView.dataSource = self
         statusPickerView.delegate = self
@@ -46,8 +48,17 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         statusTF.textAlignment = .center
         statusTF.placeholder = "Выберите статус"
         
+        addButtonPickerView()
+        // заполнение полей по умолчанию
+        
+        inputArrayAge()
+        ageTF.text = arrayAgePickerView[0]
+        
+        inputArrayStatus()
+        statusTF.text = arrayStatusPickerView[0]
     }
     
+    // формирование массива возрастов
     func inputArrayAge() {
         arrayAgePickerView.removeAll()
         for index in 18...54 {
@@ -56,6 +67,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         arrayAgePickerView.append("55 и более")
     }
     
+    // формирование массива статусов
     func inputArrayStatus() {
         arrayStatusPickerView.removeAll()
         if genderSC.selectedSegmentIndex == 0 {
@@ -110,11 +122,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     @IBAction func pressAge(_ sender: UITextField) {
-        inputArrayAge()
+        // inputArrayAge()
     }
+    
     @IBAction func pressStatus(_ sender: UITextField) {
         inputArrayStatus()
     }
+    
     @IBAction func pressSihnOut(_ sender: UIBarButtonItem) {
         do {
             try Auth.auth().signOut()
@@ -129,6 +143,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Dispose of any resources that can be recreated.
     }
     
+    // анимация Label
     func animatedLabel(label: UILabel) {
         UIView.animate(withDuration: 2, delay: 1, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseInOut], animations: {
             label.textColor = UIColor.red
@@ -143,7 +158,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         let age = ageTF.text!
         let status = statusTF.text!
-
+        
         guard ((age != "") || (status != "")) else {
             animatedLabel(label: statusLabel)
             animatedLabel(label: ageLabel)
@@ -159,5 +174,66 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
         performSegue(withIdentifier: segueIdentyfire, sender: nil)
     }
+    
+    @IBAction func changeGender(_ sender: UISegmentedControl) {
+        inputArrayStatus()
+        statusTF.text = arrayStatusPickerView[0]
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let dvc = segue.destination as? ParametrsViewController else { return }
+        dvc.parametrsDict["age"] = ageTF.text!
+        dvc.parametrsDict["gender"] = genderSC.titleForSegment(at: genderSC.selectedSegmentIndex)
+        dvc.parametrsDict["workout"] = workoutSC.titleForSegment(at: genderSC.selectedSegmentIndex)
+        dvc.parametrsDict["category"] = categorySC.titleForSegment(at: genderSC.selectedSegmentIndex)
+        dvc.parametrsDict["status"] = statusTF.text!
+        print(dvc.parametrsDict)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // добавление кнопки на PickerView
+    
+    func addButtonPickerView() {
+
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: self.view.frame.size.height/6, width: self.view.frame.size.width, height: 40.0))
+        toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+        toolBar.barStyle = UIBarStyle.blackTranslucent
+        toolBar.tintColor = UIColor.white
+        toolBar.backgroundColor = UIColor.black
+        
+        //let defaultButton = UIBarButtonItem(title: "Начальное", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ViewController.tappedToolBarBtn))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(ViewController.donePressed))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
+        label.font = UIFont(name: "Helvetica", size: 12)
+        label.backgroundColor = UIColor.clear
+        label.textColor = UIColor.white
+        label.text = "Возраст"
+        label.textAlignment = .center
+        let textBtn = UIBarButtonItem(customView: label)
+        //toolBar.setItems([defaultButton,flexSpace,textBtn,flexSpace,doneButton], animated: true)
+        toolBar.setItems([flexSpace,textBtn,flexSpace,doneButton], animated: true)
+        ageTF.inputAccessoryView = toolBar
+        statusTF.inputAccessoryView = toolBar
+    }
+    
+    @objc func donePressed(sender: UIBarButtonItem) {
+        ageTF.resignFirstResponder()
+        statusTF.resignFirstResponder()
+    }
+    /*
+    @objc func tappedToolBarBtn(sender: UIBarButtonItem) {
+        ageTF.text = "one"
+        ageTF.resignFirstResponder()
+        
+        statusTF.text = "one"
+        statusTF.resignFirstResponder()
+    }
+ */
 }
+
 

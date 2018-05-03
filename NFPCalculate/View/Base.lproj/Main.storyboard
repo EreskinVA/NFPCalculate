@@ -79,6 +79,9 @@
                                                     <segment title="Жен."/>
                                                 </segments>
                                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="changeGender:" destination="BYZ-38-t0r" eventType="valueChanged" id="0te-f2-YEX"/>
+                                                </connections>
                                             </segmentedControl>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6ER-64-KXv">
                                                 <rect key="frame" x="0.0" y="98" width="150" height="29"/>

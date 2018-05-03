@@ -106,7 +106,6 @@ class LoginViewController: UIViewController {
             userRef?.setValue(["email": user?.email])
         })
     }
-    
 }
 
 extension UIApplication {

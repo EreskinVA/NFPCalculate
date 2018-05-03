@@ -10,6 +10,8 @@ import UIKit
 
 class ParametrsViewController: UIViewController {
 
+    var parametrsDict = [String: String]()
+    
     let segueIdentyfire = "resultSegue"
     
     override func viewDidLoad() {
