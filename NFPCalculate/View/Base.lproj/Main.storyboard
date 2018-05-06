@@ -491,7 +491,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="llH-Uh-CZZ">
                                         <rect key="frame" x="3" y="106" width="306" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Быстрота" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3L-70-eCS">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Скорость" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3L-70-eCS">
                                                 <rect key="frame" x="0.0" y="0.0" width="95" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="95" id="bE5-o9-Nby"/>
@@ -657,6 +657,16 @@
                         <viewLayoutGuide key="safeArea" id="qmt-PG-2g0"/>
                     </view>
                     <connections>
+                        <outlet property="adilityResultTF" destination="z6f-aj-PIh" id="9tw-9A-uAA"/>
+                        <outlet property="adilityTF" destination="pPL-Wd-UhY" id="793-4f-RoU"/>
+                        <outlet property="enduranceResultTF" destination="mgh-us-4VP" id="tsT-fy-Mc3"/>
+                        <outlet property="enduranceTF" destination="e3q-pT-UNK" id="d8F-7I-wuo"/>
+                        <outlet property="forceResultTF" destination="WsF-jU-FWL" id="hJ5-Wt-gIh"/>
+                        <outlet property="forceTF" destination="Y5x-Sv-Tcd" id="HFU-lm-hxG"/>
+                        <outlet property="militarySkillsResultTF" destination="4T7-dp-5Vs" id="4yD-vX-IpC"/>
+                        <outlet property="militarySkillsTF" destination="qZs-08-DDM" id="XqO-g0-TLS"/>
+                        <outlet property="speedResultTF" destination="ppc-5h-8Vk" id="cDF-hx-yld"/>
+                        <outlet property="speedTF" destination="bDE-zD-QRm" id="xRL-ah-iQ4"/>
                         <segue destination="eLO-nP-vqY" kind="showDetail" identifier="resultSegue" id="fQQ-0V-PU1"/>
                     </connections>
                 </viewController>

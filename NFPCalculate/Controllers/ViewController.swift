@@ -99,26 +99,46 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             return 0
         }
     }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch pickerView.tag {
-        case 0:
-            return arrayAgePickerView[row]
-        case 1:
-            return arrayStatusPickerView[row]
-        default:
-            return ""
-        }
-    }
-    
+    /*
+     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+     switch pickerView.tag {
+     case 0:
+     return arrayAgePickerView[row]
+     case 1:
+     return arrayStatusPickerView[row]
+     default:
+     return ""
+     }
+     }
+     */
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 0 {
             ageTF.text = arrayAgePickerView[row]
-            ageTF.resignFirstResponder()
+            //ageTF.resignFirstResponder()
         } else if pickerView.tag == 1 {
             statusTF.text = arrayStatusPickerView[row]
-            statusTF.resignFirstResponder()
+            //statusTF.resignFirstResponder()
         }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label = UILabel()
+        if let v = view {
+            label = v as! UILabel
+        }
+        
+        switch pickerView.tag {
+        case 0:
+            label.font = UIFont (name: "Helvetica Neue", size: 20)
+            label.text =  arrayAgePickerView[row]
+        case 1:
+            label.font = UIFont (name: "Helvetica Neue", size: 15)
+            label.text =  arrayStatusPickerView[row]
+        default:
+            label.text = ""
+        }
+        label.textAlignment = .center
+        return label
     }
     
     @IBAction func pressAge(_ sender: UITextField) {
@@ -154,6 +174,28 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
+    func addButtonPickerView() {
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: self.view.frame.size.height/6, width: self.view.frame.size.width, height: 40.0))
+        toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+        toolBar.barStyle = UIBarStyle.blackTranslucent
+        toolBar.tintColor = UIColor.white
+        toolBar.backgroundColor = UIColor.black
+        //let defaultButton = UIBarButtonItem(title: "Начальное", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ViewController.tappedToolBarBtn))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(ViewController.donePressed))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
+        label.font = UIFont(name: "Helvetica", size: 12)
+        label.backgroundColor = UIColor.clear
+        label.textColor = UIColor.white
+        label.text = "Возраст"
+        label.textAlignment = .center
+        let textBtn = UIBarButtonItem(customView: label)
+        //toolBar.setItems([defaultButton,flexSpace,textBtn,flexSpace,doneButton], animated: true)
+        toolBar.setItems([flexSpace,textBtn,flexSpace,doneButton], animated: true)
+        ageTF.inputAccessoryView = toolBar
+        statusTF.inputAccessoryView = toolBar
+    }
+    
     @IBAction func pressNext(_ sender: UIButton) {
         
         let age = ageTF.text!
@@ -176,6 +218,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     @IBAction func changeGender(_ sender: UISegmentedControl) {
+        self.view.endEditing(true)
         inputArrayStatus()
         statusTF.text = arrayStatusPickerView[0]
     }
@@ -195,45 +238,19 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.view.endEditing(true)
     }
     
-    // добавление кнопки на PickerView
-    
-    func addButtonPickerView() {
-
-        let toolBar = UIToolbar(frame: CGRect(x: 0, y: self.view.frame.size.height/6, width: self.view.frame.size.width, height: 40.0))
-        toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
-        toolBar.barStyle = UIBarStyle.blackTranslucent
-        toolBar.tintColor = UIColor.white
-        toolBar.backgroundColor = UIColor.black
-        
-        //let defaultButton = UIBarButtonItem(title: "Начальное", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ViewController.tappedToolBarBtn))
-        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(ViewController.donePressed))
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
-        label.font = UIFont(name: "Helvetica", size: 12)
-        label.backgroundColor = UIColor.clear
-        label.textColor = UIColor.white
-        label.text = "Возраст"
-        label.textAlignment = .center
-        let textBtn = UIBarButtonItem(customView: label)
-        //toolBar.setItems([defaultButton,flexSpace,textBtn,flexSpace,doneButton], animated: true)
-        toolBar.setItems([flexSpace,textBtn,flexSpace,doneButton], animated: true)
-        ageTF.inputAccessoryView = toolBar
-        statusTF.inputAccessoryView = toolBar
-    }
-    
     @objc func donePressed(sender: UIBarButtonItem) {
         ageTF.resignFirstResponder()
         statusTF.resignFirstResponder()
     }
     /*
-    @objc func tappedToolBarBtn(sender: UIBarButtonItem) {
-        ageTF.text = "one"
-        ageTF.resignFirstResponder()
-        
-        statusTF.text = "one"
-        statusTF.resignFirstResponder()
-    }
- */
+     @objc func tappedToolBarBtn(sender: UIBarButtonItem) {
+     ageTF.text = "one"
+     ageTF.resignFirstResponder()
+     
+     statusTF.text = "one"
+     statusTF.resignFirstResponder()
+     }
+     */
 }
 
 
