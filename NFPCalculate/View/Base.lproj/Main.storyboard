@@ -43,8 +43,8 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="категория" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krS-cg-6Nf">
-                                                <rect key="frame" x="0.0" y="155" width="81" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категория" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krS-cg-6Nf">
+                                                <rect key="frame" x="0.0" y="155" width="83" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -421,7 +421,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UtX-P8-k5v">
+                            <stackView opaque="NO" tag="1" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UtX-P8-k5v">
                                 <rect key="frame" x="4" y="74" width="312" height="361.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BGI-fs-mPg">
@@ -552,7 +552,7 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yti-rC-s60">
+                                    <stackView opaque="NO" tag="2" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yti-rC-s60">
                                         <rect key="frame" x="3" y="206" width="306" height="50.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Военно-прикладные навыки" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJ6-Hc-Ig6">
@@ -584,7 +584,7 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="69b-Qh-0Ac">
+                                    <stackView opaque="NO" tag="3" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="69b-Qh-0Ac">
                                         <rect key="frame" x="3" y="276.5" width="306" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ловкость" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cd7-Ki-rwB">
@@ -658,12 +658,14 @@
                     </view>
                     <connections>
                         <outlet property="adilityResultTF" destination="z6f-aj-PIh" id="9tw-9A-uAA"/>
+                        <outlet property="adilityStack" destination="69b-Qh-0Ac" id="zR4-Ox-89Y"/>
                         <outlet property="adilityTF" destination="pPL-Wd-UhY" id="793-4f-RoU"/>
                         <outlet property="enduranceResultTF" destination="mgh-us-4VP" id="tsT-fy-Mc3"/>
                         <outlet property="enduranceTF" destination="e3q-pT-UNK" id="d8F-7I-wuo"/>
                         <outlet property="forceResultTF" destination="WsF-jU-FWL" id="hJ5-Wt-gIh"/>
                         <outlet property="forceTF" destination="Y5x-Sv-Tcd" id="HFU-lm-hxG"/>
                         <outlet property="militarySkillsResultTF" destination="4T7-dp-5Vs" id="4yD-vX-IpC"/>
+                        <outlet property="militarySkillsStack" destination="yti-rC-s60" id="izj-z3-yx0"/>
                         <outlet property="militarySkillsTF" destination="qZs-08-DDM" id="XqO-g0-TLS"/>
                         <outlet property="speedResultTF" destination="ppc-5h-8Vk" id="cDF-hx-yld"/>
                         <outlet property="speedTF" destination="bDE-zD-QRm" id="xRL-ah-iQ4"/>
@@ -674,7 +676,7 @@
             </objects>
             <point key="canvasLocation" x="2523.75" y="-680.28169014084506"/>
         </scene>
-        <!--View Controller-->
+        <!--О программе-->
         <scene sceneID="z1R-Vc-DT1">
             <objects>
                 <viewController id="xu6-3J-tku" sceneMemberID="viewController">
@@ -709,7 +711,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7db-G2-Kxy"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="cNY-jS-h3b"/>
+                    <tabBarItem key="tabBarItem" title="О программе" id="cNY-jS-h3b"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KDH-Nk-Cg9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

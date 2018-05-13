@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		043B0173CD03554FD0AB4FA1 /* Pods_NFPCalculate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED4014B0033B4E14ED85AD2C /* Pods_NFPCalculate.framework */; };
 		F8265B4B209B07B600C704FF /* CategoryPhysExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8265B4A209B07B600C704FF /* CategoryPhysExercises.swift */; };
+		F8265B4F209F86A500C704FF /* ResultAmountPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8265B4E209F86A500C704FF /* ResultAmountPoints.swift */; };
 		F84D2E652099B3A300ECB1E7 /* HystoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84D2E642099B3A300ECB1E7 /* HystoryTableViewCell.swift */; };
 		F8A3F2922099135A001DC708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A3F2912099135A001DC708 /* AppDelegate.swift */; };
 		F8A3F2942099135A001DC708 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A3F2932099135A001DC708 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		B3EFF4784E32DB7E413D7F32 /* Pods-NFPCalculate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NFPCalculate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NFPCalculate/Pods-NFPCalculate.debug.xcconfig"; sourceTree = "<group>"; };
 		ED4014B0033B4E14ED85AD2C /* Pods_NFPCalculate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NFPCalculate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8265B4A209B07B600C704FF /* CategoryPhysExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPhysExercises.swift; sourceTree = "<group>"; };
+		F8265B4E209F86A500C704FF /* ResultAmountPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultAmountPoints.swift; sourceTree = "<group>"; };
 		F84D2E642099B3A300ECB1E7 /* HystoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HystoryTableViewCell.swift; sourceTree = "<group>"; };
 		F8A3F28E2099135A001DC708 /* NFPCalculate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NFPCalculate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8A3F2912099135A001DC708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				F8265B4A209B07B600C704FF /* CategoryPhysExercises.swift */,
+				F8265B4E209F86A500C704FF /* ResultAmountPoints.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				F8A3F2AE20998003001DC708 /* HystoryTableViewController.swift in Sources */,
 				F8A3F2A420997A64001DC708 /* LoginViewController.swift in Sources */,
 				F8FC76CC2099CE3D006E2345 /* ResultTableViewCell.swift in Sources */,
+				F8265B4F209F86A500C704FF /* ResultAmountPoints.swift in Sources */,
 				F8265B4B209B07B600C704FF /* CategoryPhysExercises.swift in Sources */,
 				F84D2E652099B3A300ECB1E7 /* HystoryTableViewCell.swift in Sources */,
 				F8A3F2942099135A001DC708 /* ViewController.swift in Sources */,

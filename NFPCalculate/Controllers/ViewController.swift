@@ -219,7 +219,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBAction func changeGender(_ sender: UISegmentedControl) {
         self.view.endEditing(true)
+//        if genderSC.titleForSegment(at: genderSC.selectedSegmentIndex) == "Жен." {
+//            workoutSC.setEnabled(false, forSegmentAt: 1)
+//            workoutSC.setEnabled(false, forSegmentAt: 2)
+//        } else {
+//            workoutSC.setEnabled(true, forSegmentAt: 1)
+//            workoutSC.setEnabled(true, forSegmentAt: 2)
+//        }
         inputArrayStatus()
+//        workoutSC.selectedSegmentIndex = 0
         statusTF.text = arrayStatusPickerView[0]
     }
     
@@ -228,8 +236,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         guard let dvc = segue.destination as? ParametrsViewController else { return }
         dvc.parametrsDict["age"] = ageTF.text!
         dvc.parametrsDict["gender"] = genderSC.titleForSegment(at: genderSC.selectedSegmentIndex)
-        dvc.parametrsDict["workout"] = workoutSC.titleForSegment(at: genderSC.selectedSegmentIndex)
-        dvc.parametrsDict["category"] = categorySC.titleForSegment(at: genderSC.selectedSegmentIndex)
+        dvc.parametrsDict["workout"] = workoutSC.titleForSegment(at: workoutSC.selectedSegmentIndex)
+        dvc.parametrsDict["category"] = categorySC.titleForSegment(at: categorySC.selectedSegmentIndex)
         dvc.parametrsDict["status"] = statusTF.text!
         print(dvc.parametrsDict)
     }
