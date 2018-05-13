@@ -7,17 +7,41 @@
 //
 
 import UIKit
+import Firebase
 
 class HystoryTableViewController: UITableViewController {
 
+    var user: UserC!
+    var ref: DatabaseReference!
+    var resultHystory = Array<ResultHystory>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        guard let currentUser = Auth.auth().currentUser else { return }
+        user = UserC(user: currentUser)
+        ref = Database.database().reference(withPath: "users").child(String(user.uid)).child("date")
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        ref.observe(.value) { [weak self] (snapshot) in
+            var _hystory = Array<ResultHystory>()
+            for item in snapshot.children {
+                let hystory = ResultHystory(snapshot: item as! DataSnapshot)
+                _hystory.append(hystory)
+            }
+            self?.resultHystory = _hystory
+            self?.tableView.reloadData()
+            
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ref.removeAllObservers()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,31 +51,48 @@ class HystoryTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 1
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return resultHystory.count
     }
 
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let history = resultHystory[indexPath.row]
+            history.ref?.removeValue()
+        }
+    }
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! HystoryTableViewCell
         
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        formatter.dateFormat = "yyyy.MM.dd HH:mm"
         let someDateTime = formatter.string(from: date)
-        
-        cell.numberLabel.text = "1"
-        cell.dateLabel.text = someDateTime
-        cell.ratingLabel.text = "100"
       
+        cell.backgroundColor = .clear
+        let history = resultHystory[indexPath.row]
+        let historyDate = history.date
+        let level = history.level
+        
+        cell.numberLabel.text = String(indexPath.row + 1)
+        cell.dateLabel.text = historyDate
+        cell.ratingLabel.text = level
+        
+        // cell.textLabel?.textColor = .white
         
         return cell
+        
     }
   
 
