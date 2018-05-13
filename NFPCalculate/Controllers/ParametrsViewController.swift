@@ -51,7 +51,7 @@ class ParametrsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var arrayMilitarySkillsResultPV: Array = [String]()
     var arrayAdilityResultPV: Array = [String]()
     
-   // var resultArrayPV: Array = [String]()
+    // var resultArrayPV: Array = [String]()
     
     let segueIdentyfire = "resultSegue"
     
@@ -446,5 +446,29 @@ class ParametrsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         enduranceResultTF.resignFirstResponder()
         militarySkillsResultTF.resignFirstResponder()
         adilityResultTF.resignFirstResponder()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let dvc = segue.destination as? ResultViewController else { return }
+        
+        print(forceTF.text!)
+        print(speedTF.text!)
+        print(enduranceTF.text!)
+        print(militarySkillsTF.text!)
+        print(adilityTF.text!)
+        
+        parametrsDict["forceUpr"] = forceTF.text!
+        parametrsDict["speedUpr"] = speedTF.text!
+        parametrsDict["enduranceUpr"] = enduranceTF.text!
+        parametrsDict["militarySkillsUpr"] = militarySkillsTF.text!
+        parametrsDict["adilityUpr"] = adilityTF.text!
+        
+        parametrsDict["forceResult"] = forceResultTF.text!
+        parametrsDict["speedResult"] = speedResultTF.text!
+        parametrsDict["enduranceResult"] = enduranceResultTF.text!
+        parametrsDict["militarySkillsResult"] = militarySkillsResultTF.text!
+        parametrsDict["adilityResult"] = adilityResultTF.text!
+        
+        dvc.parametrsDict = parametrsDict
     }
 }

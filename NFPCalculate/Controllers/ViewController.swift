@@ -239,7 +239,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         dvc.parametrsDict["workout"] = workoutSC.titleForSegment(at: workoutSC.selectedSegmentIndex)
         dvc.parametrsDict["category"] = categorySC.titleForSegment(at: categorySC.selectedSegmentIndex)
         dvc.parametrsDict["status"] = statusTF.text!
-        print(dvc.parametrsDict)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

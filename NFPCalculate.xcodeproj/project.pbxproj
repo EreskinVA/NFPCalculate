@@ -19,8 +19,8 @@
 		F8A3F2A420997A64001DC708 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A3F2A320997A64001DC708 /* LoginViewController.swift */; };
 		F8A3F2A620997D09001DC708 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8A3F2A520997D08001DC708 /* GoogleService-Info.plist */; };
 		F8A3F2AE20998003001DC708 /* HystoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A3F2AD20998003001DC708 /* HystoryTableViewController.swift */; };
+		F8EBC0FA20A8B9FE00535334 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC0F920A8B9FE00535334 /* User.swift */; };
 		F8FC76CA2099CDF1006E2345 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC76C92099CDF1006E2345 /* ResultViewController.swift */; };
-		F8FC76CC2099CE3D006E2345 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC76CB2099CE3D006E2345 /* ResultTableViewCell.swift */; };
 		F8FC76CE2099E318006E2345 /* ParametrsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FC76CD2099E318006E2345 /* ParametrsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,8 +41,8 @@
 		F8A3F2A320997A64001DC708 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F8A3F2A520997D08001DC708 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F8A3F2AD20998003001DC708 /* HystoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HystoryTableViewController.swift; sourceTree = "<group>"; };
+		F8EBC0F920A8B9FE00535334 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F8FC76C92099CDF1006E2345 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		F8FC76CB2099CE3D006E2345 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		F8FC76CD2099E318006E2345 /* ParametrsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametrsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,7 +125,6 @@
 				F8A3F2952099135A001DC708 /* Main.storyboard */,
 				F8A3F29A2099135E001DC708 /* LaunchScreen.storyboard */,
 				F84D2E642099B3A300ECB1E7 /* HystoryTableViewCell.swift */,
-				F8FC76CB2099CE3D006E2345 /* ResultTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -135,6 +134,7 @@
 			children = (
 				F8265B4A209B07B600C704FF /* CategoryPhysExercises.swift */,
 				F8265B4E209F86A500C704FF /* ResultAmountPoints.swift */,
+				F8EBC0F920A8B9FE00535334 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,13 +268,13 @@
 			files = (
 				F8A3F2AE20998003001DC708 /* HystoryTableViewController.swift in Sources */,
 				F8A3F2A420997A64001DC708 /* LoginViewController.swift in Sources */,
-				F8FC76CC2099CE3D006E2345 /* ResultTableViewCell.swift in Sources */,
 				F8265B4F209F86A500C704FF /* ResultAmountPoints.swift in Sources */,
 				F8265B4B209B07B600C704FF /* CategoryPhysExercises.swift in Sources */,
 				F84D2E652099B3A300ECB1E7 /* HystoryTableViewCell.swift in Sources */,
 				F8A3F2942099135A001DC708 /* ViewController.swift in Sources */,
 				F8A3F2922099135A001DC708 /* AppDelegate.swift in Sources */,
 				F8FC76CE2099E318006E2345 /* ParametrsViewController.swift in Sources */,
+				F8EBC0FA20A8B9FE00535334 /* User.swift in Sources */,
 				F8FC76CA2099CDF1006E2345 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
